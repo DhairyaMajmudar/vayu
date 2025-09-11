@@ -1,4 +1,4 @@
-import { Quotes } from "./icons";
+import { Quotes } from "../icons";
 
 const testimonials = [
   {

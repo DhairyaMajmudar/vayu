@@ -1,4 +1,4 @@
-import { Grid } from "./icons";
+import { Grid } from "../icons";
 
 const items = [
   {

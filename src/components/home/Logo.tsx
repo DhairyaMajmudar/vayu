@@ -1,4 +1,4 @@
-import { LogoIcon } from "./icons";
+import { LogoIcon } from "../icons";
 
 export function Logo({ className }: { className?: string }) {
   return (
