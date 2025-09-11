@@ -1,6 +1,6 @@
-export { CallToAction } from "./CallToAction";
-export { FeaturesSection } from "./FeaturesSection";
-export { Header } from "./Header";
-export { HeroSection } from "./HeroSection";
-export { Logo } from "./Logo";
-export { TestimonialsSection } from "./TestimonialsSection";
+export { CallToAction } from "./home/CallToAction";
+export { FeaturesSection } from "./home/FeaturesSection";
+export { Header } from "./home/Header";
+export { HeroSection } from "./home/HeroSection";
+export { Logo } from "./home/Logo";
+export { TestimonialsSection } from "./home/TestimonialsSection";
