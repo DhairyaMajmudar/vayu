@@ -1,6 +1,6 @@
 import { Grid } from "./icons";
 
-const features = [
+const items = [
   {
     id: 1,
     title: "2-4 Days",
@@ -37,7 +37,7 @@ function HeroCard({
 
 export function HeroSection() {
   return (
-    <div className="relative mb-16 overflow-hidden bg-gradient-to-r from-blue-600 to-indigo-700 py-16 text-white">
+    <div className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-indigo-700 py-16 text-white">
       <div className="absolute inset-0 z-0 overflow-hidden">
         <Grid className="absolute top-0 left-0 h-full w-full transform-gpu opacity-20" />
       </div>
@@ -53,11 +53,11 @@ export function HeroSection() {
 
           <div className="mx-auto mt-8 max-w-2xl">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-              {features.map((feature) => (
+              {items.map((item) => (
                 <HeroCard
-                  key={feature.id}
-                  title={feature.title}
-                  description={feature.description}
+                  key={item.id}
+                  title={item.title}
+                  description={item.description}
                 />
               ))}
             </div>
