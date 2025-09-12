@@ -1,10 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { Header } from "@/components";
+import { Header, UpcomingWeekends } from "@/components";
 import { Info } from "@/components/icons";
 
-const buttonItem = [
+import { WeekendCalendar } from "@/components/planner/WeekendCalendar";
+import { findUpcomingLongWeekends } from "@/lib";
+
+const buttonItems = [
   {
     id: 1,
     text: "Regular Weekend (2 days)",
@@ -38,7 +41,7 @@ export default function PlannerPage() {
               </h1>
 
               <div className="mt-4 flex flex-wrap gap-2 sm:mt-0">
-                {buttonItem.map((item) => (
+                {buttonItems.map((item) => (
                   <button
                     type="button"
                     key={item.id}
@@ -72,6 +75,20 @@ export default function PlannerPage() {
                     </p>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
+            <div className="lg:col-span-3">
+              <div className="h-[600px] rounded-md border border-gray-200 bg-white p-4 shadow-sm">
+                <WeekendCalendar />
+              </div>
+            </div>
+
+            <div className="lg:col-span-1">
+              <div className="space-y-6">
+                <UpcomingWeekends longWeekends={findUpcomingLongWeekends()} />
               </div>
             </div>
           </div>
