@@ -8,6 +8,7 @@ type EventModalProps = {
   isOpen: boolean;
   onClose: () => void;
   onSave: (eventData: EventData) => void;
+  onDelete?: (eventData: EventData) => void;
   event?: EventData | null;
   startDate?: Date;
   endDate?: Date;
@@ -34,6 +35,7 @@ export function EventModal({
   isOpen,
   onClose,
   onSave,
+  onDelete,
   event,
   startDate,
   endDate,
@@ -158,6 +160,20 @@ export function EventModal({
           </div>
 
           <div className="flex justify-end space-x-2">
+            {event && onDelete && (
+              <button
+                type="button"
+                onClick={() => {
+                  if (event && onDelete) {
+                    onDelete(event);
+                    onClose();
+                  }
+                }}
+                className="rounded-md bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:outline-none"
+              >
+                Delete
+              </button>
+            )}
             <button
               type="button"
               onClick={onClose}
