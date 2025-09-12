@@ -1,5 +1,5 @@
 import { addDays, getDay, subDays } from "date-fns";
-
+import type { MyEvent } from "@/constants";
 import { indianHolidays } from "@/constants";
 
 export const findUpcomingLongWeekends = () => {
@@ -46,5 +46,5 @@ export const findUpcomingLongWeekends = () => {
     }
   }
 
-  return longWeekends;
+  return longWeekends as MyEvent[];
 };
