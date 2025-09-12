@@ -28,7 +28,7 @@ export function UpcomingWeekends({ longWeekends }: UpcomingWeekendProps) {
       .filter(
         (weekend) =>
           isAfter(weekend.start, today) &&
-          !isAfter(weekend.start, threeMonthsFromNow)
+          !isAfter(weekend.start, threeMonthsFromNow),
       )
       .sort((a, b) => a.start.getTime() - b.start.getTime());
 

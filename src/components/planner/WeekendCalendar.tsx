@@ -58,8 +58,8 @@ export function WeekendCalendar() {
     if (selectedEvent) {
       setMyEvents(
         myEvents.map((event) =>
-          event === selectedEvent ? { ...event, ...eventData } : event
-        )
+          event === selectedEvent ? { ...event, ...eventData } : event,
+        ),
       );
     } else {
       setMyEvents([...myEvents, eventData as MyEvent]);
@@ -82,8 +82,8 @@ export function WeekendCalendar() {
       myEvents.map((existingEvent) =>
         existingEvent === event
           ? { ...existingEvent, start, end }
-          : existingEvent
-      )
+          : existingEvent,
+      ),
     );
   };
 
