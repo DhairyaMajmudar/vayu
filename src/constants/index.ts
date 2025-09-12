@@ -66,3 +66,31 @@ export const indianHolidays = [
     isHoliday: true,
   },
 ];
+
+export const categories = [
+  {
+    value: "personal",
+    label: "Personal",
+    color: "bg-blue-100 text-blue-800 ",
+  },
+  {
+    value: "work",
+    label: "Work",
+    color: "bg-green-100 text-green-800 ",
+  },
+  {
+    value: "travel",
+    label: "Travel",
+    color: "bg-amber-100 text-amber-800 ",
+  },
+  {
+    value: "family",
+    label: "Family",
+    color: "bg-rose-100 text-rose-800 ",
+  },
+  {
+    value: "other",
+    label: "Other",
+    color: "bg-gray-100 text-gray-800 ",
+  },
+];
