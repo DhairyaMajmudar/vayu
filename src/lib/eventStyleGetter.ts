@@ -1,4 +1,4 @@
-export const eventStyleGetter = (event) => {
+export const eventStyleGetter = (event: any) => {
   const style: React.CSSProperties = {
     borderRadius: "6px",
     opacity: 0.9,

@@ -1,23 +1,35 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Calendar, type Event } from "react-big-calendar";
+import { Calendar, dateFnsLocalizer, type Event } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "@/styles/calendar.css";
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
+import { format, getDay, parse, startOfWeek } from "date-fns";
+import { enUS } from "date-fns/locale";
 import { indianHolidays, type MyEvent } from "@/constants";
-import { eventStyleGetter, findUpcomingLongWeekends, localizer } from "@/lib";
+import { eventStyleGetter, findUpcomingLongWeekends } from "@/lib";
 import { type EventData, EventModal } from "./EventModal";
-
-const DnDCalendar = withDragAndDrop(Calendar);
-
-const longWeekends = findUpcomingLongWeekends();
 
 interface WeekendCalendarProps {
   externalEventData?: EventData | null;
   onExternalEventProcessed?: () => void;
 }
+
+const DnDCalendar = withDragAndDrop(Calendar);
+
+const longWeekends = findUpcomingLongWeekends();
+
+const localizer = dateFnsLocalizer({
+  format,
+  parse,
+  startOfWeek: () => startOfWeek(new Date(), { locale: enUS }),
+  getDay,
+  locales: {
+    "en-US": enUS,
+  },
+});
 
 export function WeekendCalendar({
   externalEventData,
