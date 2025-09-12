@@ -25,7 +25,7 @@ export default function HomePage() {
             <Logo className="mb-4 md:mb-0" />
             <div className="flex flex-col items-center space-y-4 md:flex-row md:space-y-0 md:space-x-6">
               <p className="text-sm text-gray-500">
-                © 2025 Vayu. All rights reserved.
+                &copy; 2025 Vayu. All rights reserved.
               </p>
             </div>
           </div>
