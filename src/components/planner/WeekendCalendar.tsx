@@ -5,22 +5,10 @@ import { Calendar, type Event } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "@/styles/calendar.css";
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
-import { type EventData, EventModal } from "./EventModal";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
-import { indianHolidays } from "@/constants";
+import { indianHolidays, type MyEvent } from "@/constants";
 import { eventStyleGetter, findUpcomingLongWeekends, localizer } from "@/lib";
-
-interface MyEvent extends Event {
-  title: string;
-  start: Date;
-  end: Date;
-  isHoliday?: boolean;
-  isLongWeekend?: boolean;
-  isPotential?: boolean;
-  description?: string;
-  category?: "personal" | "work" | "travel" | "family" | "other";
-  allDay?: boolean;
-}
+import { type EventData, EventModal } from "./EventModal";
 
 const DnDCalendar = withDragAndDrop(Calendar);
 
@@ -36,7 +24,7 @@ export function WeekendCalendar({
   onExternalEventProcessed,
 }: WeekendCalendarProps = {}) {
   const [myEvents, setMyEvents] = useState<MyEvent[]>([
-    ...(indianHolidays as MyEvent[]),
+    ...indianHolidays,
     ...(longWeekends as MyEvent[]),
   ]);
   const [modalOpen, setModalOpen] = useState(false);

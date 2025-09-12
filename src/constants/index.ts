@@ -1,3 +1,5 @@
+import type Event from "react-big-calendar";
+
 export type ActivitySuggestion = {
   id: string;
   title: string;
@@ -6,6 +8,18 @@ export type ActivitySuggestion = {
   duration: 2 | 3 | 4;
   allDay: boolean;
 };
+
+export interface MyEvent extends Event {
+  title: string;
+  start: Date;
+  end: Date;
+  isHoliday?: boolean;
+  isLongWeekend?: boolean;
+  isPotential?: boolean;
+  description?: string;
+  category?: "personal" | "work" | "travel" | "family" | "other";
+  allDay?: boolean;
+}
 
 export const activitySuggestions: ActivitySuggestion[] = [
   {
@@ -229,7 +243,7 @@ export const indianHolidays = [
     end: new Date(2025, 11, 25),
     isHoliday: true,
   },
-];
+] as MyEvent[];
 
 export const categories = [
   {
