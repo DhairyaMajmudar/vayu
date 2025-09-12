@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Calendar, type Event } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "@/styles/calendar.css";
@@ -26,7 +26,15 @@ const DnDCalendar = withDragAndDrop(Calendar);
 
 const longWeekends = findUpcomingLongWeekends();
 
-export function WeekendCalendar() {
+interface WeekendCalendarProps {
+  externalEventData?: EventData | null;
+  onExternalEventProcessed?: () => void;
+}
+
+export function WeekendCalendar({
+  externalEventData,
+  onExternalEventProcessed,
+}: WeekendCalendarProps = {}) {
   const [myEvents, setMyEvents] = useState<MyEvent[]>([
     ...(indianHolidays as MyEvent[]),
     ...(longWeekends as MyEvent[]),
@@ -37,6 +45,14 @@ export function WeekendCalendar() {
     start: Date;
     end: Date;
   } | null>(null);
+
+  useEffect(() => {
+    if (externalEventData) {
+      setSelectedEvent(null);
+      setSelectedRange(null);
+      setModalOpen(true);
+    }
+  }, [externalEventData]);
 
   const handleSelectSlot = ({ start, end }: { start: Date; end: Date }) => {
     setSelectedEvent(null);
@@ -65,6 +81,10 @@ export function WeekendCalendar() {
       setMyEvents([...myEvents, eventData as MyEvent]);
     }
     setModalOpen(false);
+
+    if (externalEventData && onExternalEventProcessed) {
+      onExternalEventProcessed();
+    }
   };
 
   const handleDeleteEvent = () => {
@@ -78,6 +98,10 @@ export function WeekendCalendar() {
     setModalOpen(false);
     setSelectedEvent(null);
     setSelectedRange(null);
+
+    if (externalEventData && onExternalEventProcessed) {
+      onExternalEventProcessed();
+    }
   };
 
   const moveEvent = ({ event, start, end }: any) => {
@@ -121,7 +145,7 @@ export function WeekendCalendar() {
         onClose={handleCloseModal}
         onSave={handleSaveEvent}
         onDelete={handleDeleteEvent}
-        event={selectedEvent as EventData}
+        event={(selectedEvent as EventData) || externalEventData}
         startDate={selectedRange?.start}
         endDate={selectedRange?.end}
       />

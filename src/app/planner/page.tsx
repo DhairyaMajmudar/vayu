@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Header, UpcomingWeekends } from "@/components";
+import { ActivitySuggestions, Header, UpcomingWeekends } from "@/components";
 import { Info } from "@/components/icons";
-
+import type { EventData } from "@/components/planner/EventModal";
 import { WeekendCalendar } from "@/components/planner/WeekendCalendar";
+import { type ActivitySuggestion, activitySuggestions } from "@/constants";
 import { findUpcomingLongWeekends } from "@/lib";
 
 const buttonItems = [
@@ -29,6 +30,58 @@ const longWeekends = findUpcomingLongWeekends();
 
 export default function PlannerPage() {
   const [planDuration, setPlanDuration] = useState<number>(2);
+  const [selectedActivityData, setSelectedActivityData] =
+    useState<EventData | null>(null);
+
+  const filteredActivities = activitySuggestions
+    .filter((activity) => activity.duration === planDuration)
+    .slice(0, 6);
+
+  const handleActivitySelect = (activity: ActivitySuggestion) => {
+    const now = new Date();
+    const nextWeekend = new Date(now);
+
+    const daysUntilSaturday = (6 - now.getDay()) % 7 || 7;
+    nextWeekend.setDate(now.getDate() + daysUntilSaturday);
+
+    let eventStartDate: Date;
+    let eventEndDate: Date;
+
+    if (activity.allDay) {
+      eventStartDate = new Date(nextWeekend);
+      eventStartDate.setHours(0, 0, 0, 0);
+
+      eventEndDate = new Date(nextWeekend);
+      eventEndDate.setDate(eventStartDate.getDate() + (activity.duration - 1));
+      eventEndDate.setHours(23, 59, 59, 999);
+    } else {
+      eventStartDate = new Date(nextWeekend);
+      eventStartDate.setHours(9, 0, 0, 0);
+
+      eventEndDate = new Date(nextWeekend);
+
+      if (activity.duration > 1) {
+        eventEndDate.setDate(
+          eventStartDate.getDate() + (activity.duration - 1),
+        );
+      }
+    }
+
+    const eventData: EventData = {
+      title: activity.title,
+      description: activity.description,
+      category: activity.category,
+      start: eventStartDate,
+      end: eventEndDate,
+      allDay: activity.allDay,
+    };
+
+    setSelectedActivityData(eventData);
+  };
+
+  const clearSelectedActivity = () => {
+    setSelectedActivityData(null);
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -84,12 +137,20 @@ export default function PlannerPage() {
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
             <div className="lg:col-span-3">
               <div className="h-[600px] rounded-md border border-gray-200 bg-white p-4 shadow-sm">
-                <WeekendCalendar />
+                <WeekendCalendar
+                  externalEventData={selectedActivityData}
+                  onExternalEventProcessed={clearSelectedActivity}
+                />
               </div>
             </div>
 
             <div className="lg:col-span-1">
               <div className="space-y-6">
+                <ActivitySuggestions
+                  activities={filteredActivities}
+                  onActivitySelect={handleActivitySelect}
+                  selectedDuration={planDuration as 2 | 3 | 4}
+                />
                 <UpcomingWeekends longWeekends={longWeekends} />
               </div>
             </div>
