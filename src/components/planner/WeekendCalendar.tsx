@@ -67,6 +67,13 @@ export function WeekendCalendar() {
     setModalOpen(false);
   };
 
+  const handleDeleteEvent = () => {
+    if (selectedEvent) {
+      setMyEvents(myEvents.filter((event) => event !== selectedEvent));
+    }
+    setModalOpen(false);
+  };
+
   const handleCloseModal = () => {
     setModalOpen(false);
     setSelectedEvent(null);
@@ -113,6 +120,7 @@ export function WeekendCalendar() {
         isOpen={modalOpen}
         onClose={handleCloseModal}
         onSave={handleSaveEvent}
+        onDelete={handleDeleteEvent}
         event={selectedEvent as EventData}
         startDate={selectedRange?.start}
         endDate={selectedRange?.end}

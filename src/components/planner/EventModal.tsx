@@ -44,6 +44,8 @@ export function EventModal({
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState<EventData["category"]>("personal");
   const [allDay, setAllDay] = useState(true);
+  const [startTime, setStartTime] = useState("09:00");
+  const [endTime, setEndTime] = useState("10:00");
 
   useEffect(() => {
     if (isOpen) {
@@ -52,11 +54,28 @@ export function EventModal({
         setDescription(event.description || "");
         setCategory(event.category || "personal");
         setAllDay(event.allDay !== false);
+
+        if (event.start && !event.allDay) {
+          const startHours = event.start.getHours().toString().padStart(2, "0");
+          const startMinutes = event.start
+            .getMinutes()
+            .toString()
+            .padStart(2, "0");
+          setStartTime(`${startHours}:${startMinutes}`);
+        }
+
+        if (event.end && !event.allDay) {
+          const endHours = event.end.getHours().toString().padStart(2, "0");
+          const endMinutes = event.end.getMinutes().toString().padStart(2, "0");
+          setEndTime(`${endHours}:${endMinutes}`);
+        }
       } else {
         setTitle("");
         setDescription("");
         setCategory("personal");
         setAllDay(true);
+        setStartTime("09:00");
+        setEndTime("10:00");
       }
     }
   }, [isOpen, event]);
@@ -66,12 +85,38 @@ export function EventModal({
 
     if (!title.trim()) return;
 
+    let eventStartDate: Date;
+    let eventEndDate: Date;
+
+    if (event) {
+      eventStartDate = new Date(event.start);
+      eventEndDate = new Date(event.end);
+    } else {
+      eventStartDate = startDate || new Date();
+      eventEndDate = endDate || new Date();
+    }
+
+    if (!allDay) {
+      const [startHours, startMinutes] = startTime.split(":").map(Number);
+      const [endHours, endMinutes] = endTime.split(":").map(Number);
+
+      eventStartDate = new Date(eventStartDate);
+      eventStartDate.setHours(startHours, startMinutes, 0, 0);
+
+      eventEndDate = new Date(eventStartDate);
+      eventEndDate.setHours(endHours, endMinutes, 0, 0);
+
+      if (eventEndDate <= eventStartDate) {
+        eventEndDate.setDate(eventEndDate.getDate() + 1);
+      }
+    }
+
     onSave({
       title,
       description,
       category,
-      start: event?.start || startDate || new Date(),
-      end: event?.end || endDate || new Date(),
+      start: eventStartDate,
+      end: eventEndDate,
       allDay,
     });
   };
@@ -148,7 +193,7 @@ export function EventModal({
           </div>
 
           <div className="mb-6">
-            <label className="mb-1 flex items-center text-sm font-medium text-gray-700">
+            <label className="mb-3 flex items-center text-sm font-medium text-gray-700">
               <input
                 type="checkbox"
                 checked={allDay}
@@ -157,6 +202,41 @@ export function EventModal({
               />
               All day event
             </label>
+
+            {!allDay && (
+              <div className="mt-4 grid grid-cols-2 gap-4">
+                <div>
+                  <label
+                    htmlFor="start-time"
+                    className="mb-1 block text-sm font-medium text-gray-700"
+                  >
+                    Start Time
+                  </label>
+                  <input
+                    id="start-time"
+                    type="time"
+                    value={startTime}
+                    onChange={(e) => setStartTime(e.target.value)}
+                    className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="end-time"
+                    className="mb-1 block text-sm font-medium text-gray-700"
+                  >
+                    End Time
+                  </label>
+                  <input
+                    id="end-time"
+                    type="time"
+                    value={endTime}
+                    onChange={(e) => setEndTime(e.target.value)}
+                    className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                  />
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="flex justify-end space-x-2">
