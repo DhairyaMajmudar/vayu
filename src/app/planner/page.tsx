@@ -25,6 +25,8 @@ const buttonItems = [
   },
 ];
 
+const longWeekends = findUpcomingLongWeekends();
+
 export default function PlannerPage() {
   const [planDuration, setPlanDuration] = useState<number>(2);
 
@@ -88,7 +90,7 @@ export default function PlannerPage() {
 
             <div className="lg:col-span-1">
               <div className="space-y-6">
-                <UpcomingWeekends longWeekends={findUpcomingLongWeekends()} />
+                <UpcomingWeekends longWeekends={longWeekends} />
               </div>
             </div>
           </div>
