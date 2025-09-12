@@ -1,3 +1,167 @@
+export type ActivitySuggestion = {
+  id: string;
+  title: string;
+  description: string;
+  category: "personal" | "work" | "travel" | "family" | "other";
+  duration: 2 | 3 | 4;
+  allDay: boolean;
+};
+
+export const activitySuggestions: ActivitySuggestion[] = [
+  {
+    id: "movie-marathon",
+    title: "Movie Marathon",
+    description:
+      "Binge-watch your favorite movie series with snacks and cozy vibes",
+    category: "personal",
+    duration: 2,
+    allDay: false,
+  },
+  {
+    id: "local-hike",
+    title: "Local Hiking Trail",
+    description: "Explore nearby hiking trails and enjoy nature",
+    category: "personal",
+    duration: 2,
+    allDay: false,
+  },
+  {
+    id: "cooking-experiment",
+    title: "Cooking New Recipe",
+    description: "Try making a complex dish you've never attempted before",
+    category: "personal",
+    duration: 2,
+    allDay: false,
+  },
+  {
+    id: "family-game-night",
+    title: "Family Game Night",
+    description: "Board games, card games, and quality family time",
+    category: "family",
+    duration: 2,
+    allDay: false,
+  },
+  {
+    id: "photography-walk",
+    title: "Photography Walk",
+    description: "Capture beautiful moments in your city with your camera",
+    category: "personal",
+    duration: 2,
+    allDay: false,
+  },
+  {
+    id: "book-reading",
+    title: "Reading Session",
+    description: "Finish that book you've been meaning to read",
+    category: "personal",
+    duration: 2,
+    allDay: false,
+  },
+
+  {
+    id: "weekend-getaway",
+    title: "Weekend Getaway",
+    description: "Short trip to a nearby destination for relaxation",
+    category: "travel",
+    duration: 3,
+    allDay: true,
+  },
+  {
+    id: "home-renovation",
+    title: "Home DIY Project",
+    description: "Tackle that home improvement project you've been postponing",
+    category: "personal",
+    duration: 3,
+    allDay: false,
+  },
+  {
+    id: "skill-learning",
+    title: "Learn New Skill",
+    description:
+      "Dedicate time to learning something new like guitar, painting, or coding",
+    category: "personal",
+    duration: 3,
+    allDay: false,
+  },
+  {
+    id: "family-reunion",
+    title: "Family Reunion",
+    description: "Organize a gathering with extended family and relatives",
+    category: "family",
+    duration: 3,
+    allDay: true,
+  },
+  {
+    id: "garden-project",
+    title: "Garden Makeover",
+    description: "Design and implement a garden renovation project",
+    category: "personal",
+    duration: 3,
+    allDay: false,
+  },
+  {
+    id: "cultural-exploration",
+    title: "Cultural City Tour",
+    description: "Explore museums, galleries, and cultural sites in your city",
+    category: "personal",
+    duration: 3,
+    allDay: false,
+  },
+
+  {
+    id: "international-trip",
+    title: "International Trip",
+    description: "Plan a short international vacation to explore a new country",
+    category: "travel",
+    duration: 4,
+    allDay: true,
+  },
+  {
+    id: "camping-adventure",
+    title: "Camping Adventure",
+    description:
+      "Multi-day camping trip with hiking, fishing, and outdoor activities",
+    category: "travel",
+    duration: 4,
+    allDay: true,
+  },
+  {
+    id: "workshop-retreat",
+    title: "Workshop/Retreat",
+    description:
+      "Attend a professional development workshop or wellness retreat",
+    category: "work",
+    duration: 4,
+    allDay: true,
+  },
+  {
+    id: "major-project",
+    title: "Major Home Project",
+    description:
+      "Complete a significant home renovation or organization project",
+    category: "personal",
+    duration: 4,
+    allDay: false,
+  },
+  {
+    id: "festival-trip",
+    title: "Music/Art Festival",
+    description: "Attend a multi-day music or art festival",
+    category: "personal",
+    duration: 4,
+    allDay: true,
+  },
+  {
+    id: "extended-family-time",
+    title: "Extended Family Vacation",
+    description:
+      "Plan a longer family vacation with multiple activities and destinations",
+    category: "family",
+    duration: 4,
+    allDay: true,
+  },
+];
+
 export const indianHolidays = [
   {
     title: "Republic Day",
