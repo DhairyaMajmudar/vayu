@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import clsx from "clsx";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -35,7 +36,10 @@ export default function RootLayout({
       className={clsx("h-full antialiased", inter.variable, monaSans.variable)}
       suppressHydrationWarning
     >
-      <body className="flex min-h-full flex-col bg-white">{children}</body>
+      <body className="flex min-h-full flex-col bg-white">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
