@@ -1,10 +1,12 @@
 import type Event from "react-big-calendar";
 
+export type EventCategory = "personal" | "work" | "travel" | "family" | "other";
+
 export type ActivitySuggestion = {
   id: string;
   title: string;
   description: string;
-  category: "personal" | "work" | "travel" | "family" | "other";
+  category: EventCategory;
   duration: 2 | 3 | 4;
   allDay: boolean;
 };
@@ -17,7 +19,7 @@ export interface MyEvent extends Event {
   isLongWeekend?: boolean;
   isPotential?: boolean;
   description?: string;
-  category?: "personal" | "work" | "travel" | "family" | "other";
+  category?: EventCategory;
   allDay?: boolean;
 }
 

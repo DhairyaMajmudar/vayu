@@ -2,7 +2,7 @@
 
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
-import { categories } from "@/constants";
+import { categories, type EventCategory } from "@/constants";
 
 type EventModalProps = {
   isOpen: boolean;
@@ -13,8 +13,6 @@ type EventModalProps = {
   startDate?: Date;
   endDate?: Date;
 };
-
-type EventCategory = "personal" | "work" | "travel" | "family" | "other";
 
 type Category = {
   value: EventCategory;

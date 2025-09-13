@@ -1,4 +1,6 @@
-export function getCategoryColor(category: string) {
+import type { EventCategory } from "@/constants";
+
+export function getCategoryColor(category: EventCategory): string {
   switch (category) {
     case "personal":
       return "bg-purple-100 text-purple-800";
