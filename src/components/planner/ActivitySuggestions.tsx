@@ -28,6 +28,14 @@ export function ActivitySuggestions({
     }
   };
 
+  if (activities.length === 0) {
+    return (
+      <div className="rounded-md bg-gradient-to-r from-green-50 to-emerald-50 p-5">
+        No activites present
+      </div>
+    );
+  }
+
   return (
     <div className="rounded-md bg-gradient-to-r from-green-50 to-emerald-50 p-5">
       <h3 className="mb-3 text-lg font-medium text-gray-900">
@@ -65,7 +73,7 @@ export function ActivitySuggestions({
             <button
               type="button"
               onClick={() => onActivitySelect(activity)}
-              className="ml-2 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green-600 text-white hover:bg-green-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-1"
+              className="ml-2 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green-600 text-white hover:bg-green-700 transition-colors duration-200 cursor-pointer"
               title={`Add ${activity.title} to calendar`}
             >
               <PlusIcon className="h-4 w-4" />
