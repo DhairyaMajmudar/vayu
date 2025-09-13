@@ -50,31 +50,6 @@ export const activitySuggestions: ActivitySuggestion[] = [
     allDay: false,
   },
   {
-    id: "family-game-night",
-    title: "Family Game Night",
-    description: "Board games, card games, and quality family time",
-    category: "family",
-    duration: 2,
-    allDay: false,
-  },
-  {
-    id: "photography-walk",
-    title: "Photography Walk",
-    description: "Capture beautiful moments in your city with your camera",
-    category: "personal",
-    duration: 2,
-    allDay: false,
-  },
-  {
-    id: "book-reading",
-    title: "Reading Session",
-    description: "Finish that book you've been meaning to read",
-    category: "personal",
-    duration: 2,
-    allDay: false,
-  },
-
-  {
     id: "weekend-getaway",
     title: "Weekend Getaway",
     description: "Short trip to a nearby destination for relaxation",
@@ -100,31 +75,6 @@ export const activitySuggestions: ActivitySuggestion[] = [
     allDay: false,
   },
   {
-    id: "family-reunion",
-    title: "Family Reunion",
-    description: "Organize a gathering with extended family and relatives",
-    category: "family",
-    duration: 3,
-    allDay: true,
-  },
-  {
-    id: "garden-project",
-    title: "Garden Makeover",
-    description: "Design and implement a garden renovation project",
-    category: "personal",
-    duration: 3,
-    allDay: false,
-  },
-  {
-    id: "cultural-exploration",
-    title: "Cultural City Tour",
-    description: "Explore museums, galleries, and cultural sites in your city",
-    category: "personal",
-    duration: 3,
-    allDay: false,
-  },
-
-  {
     id: "international-trip",
     title: "International Trip",
     description: "Plan a short international vacation to explore a new country",
@@ -147,32 +97,6 @@ export const activitySuggestions: ActivitySuggestion[] = [
     description:
       "Attend a professional development workshop or wellness retreat",
     category: "work",
-    duration: 4,
-    allDay: true,
-  },
-  {
-    id: "major-project",
-    title: "Major Home Project",
-    description:
-      "Complete a significant home renovation or organization project",
-    category: "personal",
-    duration: 4,
-    allDay: false,
-  },
-  {
-    id: "festival-trip",
-    title: "Music/Art Festival",
-    description: "Attend a multi-day music or art festival",
-    category: "personal",
-    duration: 4,
-    allDay: true,
-  },
-  {
-    id: "extended-family-time",
-    title: "Extended Family Vacation",
-    description:
-      "Plan a longer family vacation with multiple activities and destinations",
-    category: "family",
     duration: 4,
     allDay: true,
   },
