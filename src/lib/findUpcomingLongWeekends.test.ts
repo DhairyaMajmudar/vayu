@@ -29,7 +29,7 @@ describe("findUpcomingLongWeekends", () => {
         if (args.length === 0) {
           super(mockDate.getTime());
         } else {
-          // @ts-ignore
+          // @ts-expect-error
           super(...args);
         }
       }
@@ -46,7 +46,7 @@ describe("findUpcomingLongWeekends", () => {
   test("should return long weekend for Friday holiday", () => {
     const result = findUpcomingLongWeekends();
     const fridayWeekend = result.find((event) =>
-      event.title.includes("Friday Holiday")
+      event.title.includes("Friday Holiday"),
     );
 
     expect(fridayWeekend).toBeDefined();
@@ -59,7 +59,7 @@ describe("findUpcomingLongWeekends", () => {
   test("should return long weekend for Monday holiday", () => {
     const result = findUpcomingLongWeekends();
     const mondayWeekend = result.find((event) =>
-      event.title.includes("Monday Holiday")
+      event.title.includes("Monday Holiday"),
     );
 
     expect(mondayWeekend).toBeDefined();
@@ -72,12 +72,12 @@ describe("findUpcomingLongWeekends", () => {
   test("should return potential 4-day weekend for Thursday holiday", () => {
     const result = findUpcomingLongWeekends();
     const thursdayWeekend = result.find((event) =>
-      event.title.includes("Thursday Holiday")
+      event.title.includes("Thursday Holiday"),
     );
 
     expect(thursdayWeekend).toBeDefined();
     expect(thursdayWeekend?.title).toBe(
-      "Potential 4-day Weekend: Thursday Holiday"
+      "Potential 4-day Weekend: Thursday Holiday",
     );
     expect(thursdayWeekend?.start).toEqual(new Date(2024, 4, 2));
     expect(thursdayWeekend?.end).toEqual(addDays(new Date(2024, 4, 2), 3));
@@ -87,12 +87,12 @@ describe("findUpcomingLongWeekends", () => {
   test("should return potential 4-day weekend for Tuesday holiday", () => {
     const result = findUpcomingLongWeekends();
     const tuesdayWeekend = result.find((event) =>
-      event.title.includes("Tuesday Holiday")
+      event.title.includes("Tuesday Holiday"),
     );
 
     expect(tuesdayWeekend).toBeDefined();
     expect(tuesdayWeekend?.title).toBe(
-      "Potential 4-day Weekend: Tuesday Holiday"
+      "Potential 4-day Weekend: Tuesday Holiday",
     );
     expect(tuesdayWeekend?.start).toEqual(subDays(new Date(2024, 5, 4), 3));
     expect(tuesdayWeekend?.end).toEqual(new Date(2024, 5, 4));
@@ -102,7 +102,7 @@ describe("findUpcomingLongWeekends", () => {
   test("should ignore Wednesday holiday", () => {
     const result = findUpcomingLongWeekends();
     const wednesdayHoliday = result.find((event) =>
-      event.title.includes("Wednesday Holiday")
+      event.title.includes("Wednesday Holiday"),
     );
 
     expect(wednesdayHoliday).toBeUndefined();
@@ -111,7 +111,7 @@ describe("findUpcomingLongWeekends", () => {
   test("should ignore Saturday holiday", () => {
     const result = findUpcomingLongWeekends();
     const saturdayHoliday = result.find((event) =>
-      event.title.includes("Saturday Holiday")
+      event.title.includes("Saturday Holiday"),
     );
 
     expect(saturdayHoliday).toBeUndefined();
@@ -120,7 +120,7 @@ describe("findUpcomingLongWeekends", () => {
   test("should ignore Sunday holiday", () => {
     const result = findUpcomingLongWeekends();
     const sundayHoliday = result.find((event) =>
-      event.title.includes("Sunday Holiday")
+      event.title.includes("Sunday Holiday"),
     );
 
     expect(sundayHoliday).toBeUndefined();
@@ -129,7 +129,7 @@ describe("findUpcomingLongWeekends", () => {
   test("should ignore past holidays", () => {
     const result = findUpcomingLongWeekends();
     const pastHoliday = result.find((event) =>
-      event.title.includes("Past Holiday")
+      event.title.includes("Past Holiday"),
     );
 
     expect(pastHoliday).toBeUndefined();
@@ -138,7 +138,7 @@ describe("findUpcomingLongWeekends", () => {
   test("should ignore holidays beyond 6 months", () => {
     const result = findUpcomingLongWeekends();
     const farFutureHoliday = result.find((event) =>
-      event.title.includes("Far Future Holiday")
+      event.title.includes("Far Future Holiday"),
     );
 
     expect(farFutureHoliday).toBeUndefined();
@@ -175,7 +175,7 @@ describe("findUpcomingLongWeekends", () => {
     test("Friday holiday should create weekend from Friday to Sunday", () => {
       const result = findUpcomingLongWeekends();
       const fridayWeekend = result.find((event) =>
-        event.title.includes("Friday Holiday")
+        event.title.includes("Friday Holiday"),
       );
 
       expect(fridayWeekend?.start.getDay()).toBe(5);
@@ -185,7 +185,7 @@ describe("findUpcomingLongWeekends", () => {
     test("Monday holiday should create weekend from Saturday to Monday", () => {
       const result = findUpcomingLongWeekends();
       const mondayWeekend = result.find((event) =>
-        event.title.includes("Monday Holiday")
+        event.title.includes("Monday Holiday"),
       );
 
       expect(mondayWeekend?.start.getDay()).toBe(6);
@@ -195,7 +195,7 @@ describe("findUpcomingLongWeekends", () => {
     test("Thursday holiday should create potential weekend from Thursday to Sunday", () => {
       const result = findUpcomingLongWeekends();
       const thursdayWeekend = result.find((event) =>
-        event.title.includes("Thursday Holiday")
+        event.title.includes("Thursday Holiday"),
       );
 
       expect(thursdayWeekend?.start.getDay()).toBe(4);
@@ -205,7 +205,7 @@ describe("findUpcomingLongWeekends", () => {
     test("Tuesday holiday should create potential weekend from Saturday to Tuesday", () => {
       const result = findUpcomingLongWeekends();
       const tuesdayWeekend = result.find((event) =>
-        event.title.includes("Tuesday Holiday")
+        event.title.includes("Tuesday Holiday"),
       );
 
       expect(tuesdayWeekend?.start.getDay()).toBe(6);
