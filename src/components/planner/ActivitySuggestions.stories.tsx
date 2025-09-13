@@ -1,4 +1,3 @@
-import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 import type { ActivitySuggestion } from "@/constants";
 import { ActivitySuggestions } from "./ActivitySuggestions";
@@ -131,7 +130,7 @@ const extendedWeekendActivities: ActivitySuggestion[] = [
 export const RegularWeekend: Story = {
   args: {
     activities: mockActivities.filter((activity) => activity.duration <= 2),
-    onActivitySelect: action("activity-selected"),
+    onActivitySelect: () => console.log("activity-selected"),
     selectedDuration: 2,
   },
 };
@@ -139,7 +138,7 @@ export const RegularWeekend: Story = {
 export const LongWeekend: Story = {
   args: {
     activities: longWeekendActivities,
-    onActivitySelect: action("activity-selected"),
+    onActivitySelect: () => console.log("activity-selected"),
     selectedDuration: 3,
   },
 };
@@ -147,7 +146,7 @@ export const LongWeekend: Story = {
 export const ExtendedWeekend: Story = {
   args: {
     activities: extendedWeekendActivities,
-    onActivitySelect: action("activity-selected"),
+    onActivitySelect: () => console.log("activity-selected"),
     selectedDuration: 4,
   },
 };
@@ -155,7 +154,7 @@ export const ExtendedWeekend: Story = {
 export const MixedCategories: Story = {
   args: {
     activities: mockActivities,
-    onActivitySelect: action("activity-selected"),
+    onActivitySelect: () => console.log("activity-selected"),
     selectedDuration: 2,
   },
 };
@@ -163,7 +162,7 @@ export const MixedCategories: Story = {
 export const EmptyState: Story = {
   args: {
     activities: [],
-    onActivitySelect: action("activity-selected"),
+    onActivitySelect: () => console.log("activity-selected"),
     selectedDuration: 2,
   },
 };
@@ -171,7 +170,7 @@ export const EmptyState: Story = {
 export const SingleActivity: Story = {
   args: {
     activities: [mockActivities[0]],
-    onActivitySelect: action("activity-selected"),
+    onActivitySelect: () => console.log("activity-selected"),
     selectedDuration: 2,
   },
 };
@@ -198,7 +197,7 @@ export const LongDescriptions: Story = {
         allDay: false,
       },
     ],
-    onActivitySelect: action("activity-selected"),
+    onActivitySelect: () => console.log("activity-selected"),
     selectedDuration: 2,
   },
 };

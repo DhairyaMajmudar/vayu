@@ -1,4 +1,3 @@
-import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 import { EventModal } from "./EventModal";
 
@@ -46,8 +45,8 @@ type Story = StoryObj<typeof meta>;
 export const NewEvent: Story = {
   args: {
     isOpen: true,
-    onClose: action("onClose"),
-    onSave: action("onSave"),
+    onClose: () => console.log("onClose"),
+    onSave: () => console.log("onSave"),
     startDate: new Date(2025, 9, 15),
     endDate: new Date(2025, 9, 15),
   },
@@ -57,9 +56,9 @@ export const NewEvent: Story = {
 export const EditEvent: Story = {
   args: {
     isOpen: true,
-    onClose: action("onClose"),
-    onSave: action("onSave"),
-    onDelete: action("onDelete"),
+    onClose: () => console.log("onClose"),
+    onSave: () => console.log("onSave"),
+    onDelete: () => console.log("onDelete"),
     event: {
       title: "Team Meeting",
       start: new Date(2025, 9, 15, 9, 0),
@@ -75,9 +74,9 @@ export const EditEvent: Story = {
 export const PersonalEvent: Story = {
   args: {
     isOpen: true,
-    onClose: action("onClose"),
-    onSave: action("onSave"),
-    onDelete: action("onDelete"),
+    onClose: () => console.log("onClose"),
+    onSave: () => console.log("onSave"),
+    onDelete: () => console.log("onDelete"),
     event: {
       title: "Morning Workout",
       start: new Date(2025, 9, 16, 6, 0),
@@ -93,9 +92,9 @@ export const PersonalEvent: Story = {
 export const EventWithLongDescriptionAndName: Story = {
   args: {
     isOpen: true,
-    onClose: action("onClose"),
-    onSave: action("onSave"),
-    onDelete: action("onDelete"),
+    onClose: () => console.log("onClose"),
+    onSave: () => console.log("onSave"),
+    onDelete: () => console.log("onDelete"),
     event: {
       title: "Annual Company Retreat Very Very Long Named Stroybook",
       start: new Date(2025, 9, 25, 9, 0),
@@ -112,8 +111,8 @@ export const EventWithLongDescriptionAndName: Story = {
 export const ModalClosed: Story = {
   args: {
     isOpen: false,
-    onClose: action("onClose"),
-    onSave: action("onSave"),
+    onClose: () => console.log("onClose"),
+    onSave: () => console.log("onSave"),
     startDate: new Date(2025, 9, 15),
     endDate: new Date(2025, 9, 15),
   },
