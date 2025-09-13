@@ -11,7 +11,9 @@
     "format": "biome format --write",
     "type-check": "tsc --noEmit",
     "test": "bun test",
-    "test-coverage": "bun test --coverage"
+    "test-coverage": "bun test --coverage",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -24,12 +26,17 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/addon-interactions": "^8.6.14",
+    "@storybook/addon-links": "^9.1.5",
+    "@storybook/nextjs": "^9.1.5",
     "@tailwindcss/postcss": "^4",
     "@types/bun": "^1.2.21",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-big-calendar": "^1.16.2",
     "@types/react-dom": "^19",
+    "storybook": "^9.1.5",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
