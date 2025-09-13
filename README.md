@@ -7,6 +7,10 @@ A beautiful, modern web application for planning your perfect weekends with inte
 ![React](https://img.shields.io/badge/React-19.1.0-61DAFB?style=for-the-badge&logo=react)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.x-38B2AC?style=for-the-badge&logo=tailwind-css)
 
+[![CI](https://github.com/DhairyaMajmudar/vayu/actions/workflows/ci.yml/badge.svg)](https://github.com/DhairyaMajmudar/vayu/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+
 ## Features
 
 ### Smart Calendar Management
@@ -37,6 +41,13 @@ A beautiful, modern web application for planning your perfect weekends with inte
 - Professional design with app branding
 - PNG download for social media sharing
 - Preview before export
+
+### Analytics & Performance
+
+- Integrated Vercel Analytics for real-time usage insights
+- Performance monitoring and optimization
+- User experience tracking
+- Privacy-focused analytics without cookies
 
 ## Getting Started
 
@@ -135,6 +146,11 @@ vayu/
 - **Heroicons** - Beautiful hand-crafted SVG icons
 - **clsx** - Utility for constructing className strings
 
+### Analytics & Deployment
+
+- **Vercel Analytics** - Privacy-focused web analytics
+- **Vercel** - Deployment and hosting platform
+
 ## Component Library
 
 The project includes a comprehensive Storybook setup with stories for all major components:
@@ -144,6 +160,31 @@ bun storybook
 ```
 
 Visit [http://localhost:6006](http://localhost:6006) to explore components in isolation.
+
+## Deployment & Analytics
+
+### Vercel Deployment
+
+This project is optimized for deployment on [Vercel](https://vercel.com/):
+
+1. **Connect your repository** to Vercel
+2. **Configure environment variables** (if needed)
+3. **Deploy** - Vercel will automatically build and deploy your app
+
+### Analytics
+
+The application includes Vercel Analytics for:
+
+- **Real-time visitor tracking** - Monitor user activity
+- **Performance insights** - Core web vitals and page load times
+- **Privacy-first** - No cookies, GDPR compliant
+- **Zero configuration** - Works out of the box when deployed to Vercel
+
+To view analytics:
+
+1. Deploy your application to Vercel
+2. Visit your Vercel dashboard
+3. Navigate to the Analytics tab for your project
 
 ## License
 
