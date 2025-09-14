@@ -11,8 +11,11 @@
     "lint-fix": "biome check --write",
     "format": "biome format --write",
     "type-check": "tsc --noEmit",
-    "test": "bun test",
-    "test-coverage": "bun test --coverage",
+    "test-unit": "bun test",
+    "test-unit-coverage": "bun test --coverage",
+    "test-e2e": "playwright test",
+    "test-e2e-ui": "playwright test --ui",
+    "test-e2e-report": "playwright show-report",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -28,6 +31,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
+    "@playwright/test": "^1.55.0",
     "@storybook/nextjs": "^9.1.5",
     "@tailwindcss/postcss": "^4",
     "@types/bun": "^1.2.21",
