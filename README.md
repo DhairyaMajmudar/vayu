@@ -10,7 +10,6 @@ A beautiful, modern web application for planning your perfect weekends with inte
 [![CI](https://github.com/DhairyaMajmudar/vayu/actions/workflows/ci.yml/badge.svg)](https://github.com/DhairyaMajmudar/vayu/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-
 ## Features
 
 ### Smart Calendar Management
@@ -93,6 +92,9 @@ A beautiful, modern web application for planning your perfect weekends with inte
 | `bun type-check`      | Run TypeScript type checking            |
 | `bun test`            | Run test suite                          |
 | `bun test-coverage`   | Run tests with coverage report          |
+| `bun test-e2e`        | Run Playwright end-to-end tests         |
+| `bun test-e2e-ui`     | Run E2E tests with UI mode              |
+| `bun test-e2e-report` | Show E2E test report                    |
 | `bun storybook`       | Start Storybook development server      |
 | `bun build-storybook` | Build Storybook for production          |
 
@@ -140,6 +142,7 @@ vayu/
 - **BiomeJS** - Fast formatter and linter
 - **Storybook** - Component development environment
 - **Bun** - Fast JavaScript runtime and package manager
+- **Playwright** - End-to-end testing framework
 
 ### Additional Libraries
 
