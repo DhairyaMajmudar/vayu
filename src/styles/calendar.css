@@ -44,10 +44,12 @@
 
 .rbc-day-bg {
   background-color: white;
+  cursor: pointer;
 }
 
 .rbc-day-bg.rbc-off-range-bg {
   background-color: #f3f4f6;
+  cursor: pointer;
 }
 
 .rbc-day-bg.rbc-today {
